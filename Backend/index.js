@@ -45,9 +45,9 @@ const upload = multer({
   },
 });
 
-app.get("/", (req, res) => {
-  res.json("hello this is udyogSetu Backend");
-});
+// app.get("/", (req, res) => {
+//   res.json("hello this is udyogSetu Backend");
+// });
 
 // Create Account Route
 app.post("/createAccount", async (req, res) => {
