@@ -4,6 +4,7 @@ const cors = require("cors");
 const connectMongoose = require("./MongoDB/connect");
 const userModel = require("./MongoDB/userModel");
 const multer = require("multer");
+const bcrypt = require("bcrypt");
 const path = require("path");
 const userMentorModel = require("./MongoDB/mentorRequestModel");
 
@@ -54,7 +55,7 @@ app.post("/createAccount", async (req, res) => {
     const { name, aadhaarNumber, password } = req.body;
     const user = await userModel.findOne({ aadhaarNumber: aadhaarNumber });
     if (!user) {
-      // const hashPassword = await bcrypt.hash(password, 10);
+      const hashPassword = await bcrypt.hash(password, 10);
       const createdUser = await userModel.create({
         name: name,
         aadhaarNumber: aadhaarNumber,
@@ -75,7 +76,7 @@ app.post("/login", async (req, res) => {
     const { aadhaarNumber, password } = req.body;
     const user = await userModel.findOne({ aadhaarNumber: aadhaarNumber });
     if (user) {
-      // const match = await bcrypt.compare(password, user.password);
+      const match = await bcrypt.compare(password, user.password);
       if (password === user.password) {
         res.status(200).send({
           message: "user loggedIn Successfully",
