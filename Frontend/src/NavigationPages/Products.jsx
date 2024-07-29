@@ -22,7 +22,7 @@ function ProductsPage() {
     async function getProductData() {
       try {
         const res = await axios.post(
-          "http://localhost:5000/getProductDetails",
+          "https://udyog-setu-hack4-change-backend.vercel.app/getProductDetails",
           {
             userAadhaarNumber,
           }
