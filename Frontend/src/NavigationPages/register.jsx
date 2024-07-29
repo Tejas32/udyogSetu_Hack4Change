@@ -38,7 +38,7 @@ function RegisterPage() {
             formData.append('file', file);
 
             try {
-                const response = await axios.post("http://localhost:5000/registerProduct", formData, {
+                const response = await axios.post("https://udyog-setu-hack4-change-backend.vercel.app/registerProduct", formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
